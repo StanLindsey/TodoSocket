@@ -33,6 +33,7 @@ const TodoList = () => {
 
   const addTodo = (todo: string) => {
     const newTodo = {
+      id: todos.length + 1,
       title: todo,
       completed: false
     };
