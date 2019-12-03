@@ -7,21 +7,21 @@
   "main": "index.js",
   "scripts": {
     "start:frontend": "cd frontend && yarn start",
-    "test": "test",
+    "test": "yarn test:frontend",
     "test:frontend": "cd frontend && yarn test",
     "prettier": "prettier --list-different \"./**/*.{js, jsx, ts, tsx, json, md}\" \"./**/*.{js, jsx, ts, tsx, json, md}\"",
     "prelint": "yarn prettier",
-    "lint": "eslint './**/*.{js, jsx, ts,tsx}'",
+    "lint": "yarn lint:frontend",
+    "lint:frontend": "cd frontend && yarn lint",
     "//": "Internal references to binaries for use in other scripts",
     "internal:prettier": "prettier",
-    "internal:eslint": "eslint",
-    "internal:test": "CI=true react-scripts test --bail --passWithNoTests --findRelatedTests"
+    "internal:eslint": "eslint"
   },
   "lint-staged": {
-    "src/**/*.{ts,tsx}": [
+    "frontend/**/*.{ts,tsx}": [
       "yarn internal:prettier --list-different",
-      "yarn internal:eslint --max-warnings=0",
-      "yarn internal:test "
+      "cd frontend && yarn internal:eslint --max-warnings=0",
+      "cd frontend && yarn internal:test"
     ]
   },
   "husky": {
@@ -29,21 +29,16 @@
       "pre-commit": "lint-staged"
     }
   },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^2.10.0",
     "@typescript-eslint/parser": "^2.10.0",
     "eslint": "^6.7.2",
     "eslint-config-prettier": "^6.7.0",
-    "eslint-config-react": "^1.1.7",
+    "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-prettier": "^3.1.1",
     "husky": "^3.1.0",
     "lint-staged": "^9.5.0",
-    "prettier": "^1.19.1"
-  },
-  "dependencies": {
+    "prettier": "^1.19.1",
     "typescript": "^3.7.2"
   }
 }
