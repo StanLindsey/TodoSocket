@@ -13,14 +13,14 @@ const TodoListItem = ({
   checked,
   labelId
 }: {
-  value: number;
-  onToggle: (value: number) => void;
+  value: string;
+  onToggle: () => void;
   checked: boolean;
   labelId: string;
 }) => (
   <div>
     <Divider />
-    <ListItem role={undefined} dense button onClick={() => onToggle(value)}>
+    <ListItem role={undefined} dense button onClick={() => onToggle()}>
       <ListItemIcon>
         <Checkbox
           edge="start"
@@ -30,7 +30,7 @@ const TodoListItem = ({
           inputProps={{ "aria-labelledby": labelId }}
         />
       </ListItemIcon>
-      <ListItemText id={labelId} primary={`Line item ${value + 1}`} />
+      <ListItemText id={labelId} primary={value} />
     </ListItem>
   </div>
 );

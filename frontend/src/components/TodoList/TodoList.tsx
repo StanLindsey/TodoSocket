@@ -1,37 +1,42 @@
-import React from "react";
+import React, { useState } from "react";
 import { List } from "@material-ui/core";
 import TodoListItem from "../TodoListItem";
 import AddTodoForm from "../AddTodoForm";
 
+interface ITodoListItem {
+  id: number;
+  title: string;
+  completed: boolean;
+}
 const TodoList = () => {
-  const [checked, setChecked] = React.useState([0]);
+  const [todos, setTodos] = useState<ITodoListItem[] | []>([]);
 
-  const handleToggle = (value: number) => () => {
-    const currentIndex = checked.indexOf(value);
-    const newChecked = [...checked];
-
-    if (currentIndex === -1) {
-      newChecked.push(value);
-    } else {
-      newChecked.splice(currentIndex, 1);
-    }
-
-    setChecked(newChecked);
+  const addTodo = (todo: string) => {
+    setTodos([
+      ...todos,
+      {
+        id: todos.length,
+        title: todo,
+        completed: false
+      }
+    ]);
   };
+
+  const todosArray = todos as ITodoListItem[];
 
   return (
     <>
-      <AddTodoForm />
+      <AddTodoForm onSubmit={todo => addTodo(todo)} />
       <List>
-        {[0, 1, 2, 3].map(value => {
-          const labelId = `checkbox-list-label-${value}`;
+        {todosArray.map(todoItem => {
+          const labelId = `checkbox-list-label-${todoItem.id}`;
 
           return (
             <TodoListItem
-              key={value}
-              value={value}
-              onToggle={() => handleToggle(value)}
-              checked={checked.indexOf(value) !== -1}
+              key={todoItem.id}
+              value={todoItem.title}
+              onToggle={() => {}}
+              checked={todoItem.completed}
               labelId={labelId}
             />
           );

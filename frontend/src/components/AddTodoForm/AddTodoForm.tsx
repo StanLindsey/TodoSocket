@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   makeStyles,
   Theme,
@@ -30,14 +30,28 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-const AddTodoForm = () => {
+const AddTodoForm = ({ onSubmit }: { onSubmit: (todo: string) => void }) => {
   const classes = useStyles();
+  const [text, setText] = useState("");
+
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+    onSubmit(text);
+    setText("");
+  };
+
   return (
-    <Paper component="form" className={classes.root}>
+    <Paper
+      component="form"
+      className={classes.root}
+      onSubmit={e => handleSubmit(e)}
+    >
       <InputBase
         className={classes.input}
         placeholder="Add new Task"
         inputProps={{ "aria-label": "Add new task" }}
+        onChange={e => setText(e.target.value)}
+        value={text}
       />
       <IconButton
         type="submit"
