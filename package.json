@@ -1,0 +1,11 @@
+{
+  "name": "on-the-money-todo-list",
+  "version": "1.0.0",
+  "description": "A reatime todolist for the On The Money code challenge",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "Stan Lindsey",
+  "license": "MIT"
+}
