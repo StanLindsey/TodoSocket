@@ -4,6 +4,7 @@
   "description": "A reatime todolist for the On The Money code challenge",
   "main": "index.js",
   "scripts": {
+    "start:frontend": "cd frontend && yarn start",
     "test": "test"
   },
   "author": "Stan Lindsey",
