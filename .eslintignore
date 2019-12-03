@@ -1,0 +1,9 @@
+# Non-committed directories
+node_modules
+coverage
+dist
+build
+lib
+
+# misc
+.vscode/

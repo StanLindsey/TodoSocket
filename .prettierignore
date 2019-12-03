@@ -1,0 +1,12 @@
+# `yarn` has its own opinions on `package.json`, so `prettier` should ignore it
+package.json
+
+# Non-committed directories
+node_modules
+coverage
+dist
+build
+lib
+
+# misc
+.vscode/
