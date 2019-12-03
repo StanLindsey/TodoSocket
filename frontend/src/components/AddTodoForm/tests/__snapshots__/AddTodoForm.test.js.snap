@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`app matches default snapshot 1`] = `
+<form
+  className="MuiPaper-root MuiPaper-elevation1 makeStyles-root-1 MuiPaper-rounded"
+>
+  <div
+    className="MuiInputBase-root makeStyles-input-2"
+    onClick={[Function]}
+  >
+    <input
+      aria-label="Add new task"
+      className="MuiInputBase-input"
+      onAnimationStart={[Function]}
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      placeholder="Add new Task"
+      type="text"
+    />
+  </div>
+  <button
+    aria-label="submit new task"
+    className="MuiButtonBase-root MuiIconButton-root makeStyles-iconButton-3"
+    disabled={false}
+    onBlur={[Function]}
+    onDragLeave={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseLeave={[Function]}
+    onMouseUp={[Function]}
+    onTouchEnd={[Function]}
+    onTouchMove={[Function]}
+    onTouchStart={[Function]}
+    tabIndex={0}
+    type="submit"
+  >
+    <span
+      className="MuiIconButton-label"
+    >
+      <svg
+        aria-hidden="true"
+        className="MuiSvgIcon-root"
+        focusable="false"
+        role="presentation"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+        />
+      </svg>
+    </span>
+  </button>
+</form>
+`;
