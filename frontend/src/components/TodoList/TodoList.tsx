@@ -9,33 +9,39 @@ interface ITodoListItem {
   completed: boolean;
 }
 const TodoList = () => {
-  const [todos, setTodos] = useState<ITodoListItem[] | []>([]);
+  const [todos, setTodos] = useState<ITodoListItem[]>([]);
 
   const addTodo = (todo: string) => {
     setTodos([
       ...todos,
       {
-        id: todos.length,
+        id: todos.length + 1,
         title: todo,
         completed: false
       }
     ]);
   };
 
-  const todosArray = todos as ITodoListItem[];
+  const toggleTodo = (id: number) => {
+    const nextState = todos.map(a =>
+      a.id === id ? { ...a, completed: !a.completed } : a
+    );
+    setTodos(nextState);
+  };
 
   return (
     <>
       <AddTodoForm onSubmit={todo => addTodo(todo)} />
       <List>
-        {todosArray.map(todoItem => {
+        {todos.map(todoItem => {
           const labelId = `checkbox-list-label-${todoItem.id}`;
 
           return (
             <TodoListItem
               key={todoItem.id}
-              value={todoItem.title}
-              onToggle={() => {}}
+              id={todoItem.id}
+              title={todoItem.title}
+              onToggle={(id: number) => toggleTodo(id)}
               checked={todoItem.completed}
               labelId={labelId}
             />

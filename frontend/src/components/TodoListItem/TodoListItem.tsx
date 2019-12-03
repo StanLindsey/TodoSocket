@@ -8,19 +8,21 @@ import {
 } from "@material-ui/core";
 
 const TodoListItem = ({
-  value,
+  id,
+  title,
   onToggle,
   checked,
   labelId
 }: {
-  value: string;
-  onToggle: () => void;
+  id: number;
+  title: string;
+  onToggle: (id: number) => void;
   checked: boolean;
   labelId: string;
 }) => (
   <div>
     <Divider />
-    <ListItem role={undefined} dense button onClick={() => onToggle()}>
+    <ListItem role={undefined} dense button onClick={() => onToggle(id)}>
       <ListItemIcon>
         <Checkbox
           edge="start"
@@ -30,7 +32,7 @@ const TodoListItem = ({
           inputProps={{ "aria-labelledby": labelId }}
         />
       </ListItemIcon>
-      <ListItemText id={labelId} primary={value} />
+      <ListItemText id={labelId} primary={title} />
     </ListItem>
   </div>
 );
