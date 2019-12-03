@@ -1,19 +1,18 @@
 var app = require("express")();
 var server = require("http").Server(app);
 var io = require("socket.io")(server);
+var fs = require("fs");
 
-var todos = require("todos");
+var todos = require("./todos");
 
 server.listen(8080);
 
 // We use sync here because on startup we don't want to accept connections before we are ready to serve.
-let state = JSON.parse(fs.readFileSync("data.json"));
-
-const addTodo = (state, newTodo) => [...state, newTodo];
+let state = todos.getInitialState();
 
 io.on("connection", function(socket) {
   // Serve initial state on load
-  socket.emit("SEND_INITIAL_STATE", todos.getInitialState());
+  socket.emit("SEND_INITIAL_STATE", state);
 
   // Push new TODOs to all clients
   socket.on("ADD_TODO", function(newTodo) {
