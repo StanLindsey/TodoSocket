@@ -6,6 +6,9 @@
   "license": "MIT",
   "main": "index.js",
   "scripts": {
+    "install": "npm-run-all install:backend install:frontend",
+    "install:backend": "cd backend && yarn",
+    "install:frontend": "cd frontend && yarn",
     "start": "npm-run-all --parallel start:backend start:frontend",
     "start:backend": "cd backend && yarn start",
     "start:frontend": "cd frontend && yarn start",
