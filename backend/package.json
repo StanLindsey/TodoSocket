@@ -7,7 +7,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "express": "~4.16.1",
+    "express": "~4.17.3",
     "socket.io": "^2.3.0"
   },
   "jest": {
